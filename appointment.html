@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!--====== Title ======-->
-    <title>Donate</title>
+    <title>Take Appointment</title>
 
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
@@ -39,6 +39,9 @@
     <!--====== Responsive css ======-->
     <link rel="stylesheet" href="assets/css/responsive.css">
 
+    <!--====== Date Time Picker ======-->
+    <link rel="stylesheet" href="assets/datetimepicker/src/DateTimePicker.css">
+
 
 </head>
 
@@ -54,6 +57,8 @@
     </div>
 
     <!--====== PRELOADER PART START ======-->
+
+    <!--====== HEADER PART START ======-->
 
     <header class="header-area">
         <div class="container">
@@ -105,19 +110,138 @@
     </header>
 
     <!--====== HEADER PART ENDS ======-->
-
-    <section id="donate" class="contact-area pt-115">
+    <section id="contact" class="contact-area pt-115">
         <div class="container">
-            <h2>Donate for a Cause at Center</h2>
-            <p><b>With your help, we can raise a tremendous amount of financial support to benefit our mission to help animals around the globe. Please choose the donation method below</b></p>
-            <a href="#"><img src="assets/images/donate/donate.jpg" alt="donate1" /></a>
-            <a href="#"><img src="assets/images/donate/donate2.png" alt="donate1" /></a>
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="contact-title text-center">
+                        <h2 class="title">Request for Appointment</h2>
+                    </div>
+                    <!-- contact title -->
+                </div>
+            </div>
+            <!-- row -->
+            <div class="contact-box mt-70">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="contact-info pt-25">
+                            <h4 class="info-title">Alternative Info</h4>
+                            <ul>
+                                <li>
+                                    <div class="single-info mt-30">
+                                        <div class="info-icon">
+                                            <i class="lni-phone-handset"></i>
+                                        </div>
+                                        <div class="info-content">
+                                            <p>+977 1234 56789</p>
+                                        </div>
+                                    </div>
+                                    <!-- single info -->
+                                </li>
+                                <li>
+                                    <div class="single-info mt-30">
+                                        <div class="info-icon">
+                                            <i class="lni-envelope"></i>
+                                        </div>
+                                        <div class="info-content">
+                                            <p>officalanimalcarenepal@gmail.com</p>
+                                        </div>
+                                    </div>
+                                    <!-- single info -->
+                                </li>
+                                <li>
+                                    <div class="single-info mt-30">
+                                        <div class="info-icon">
+                                            <i class="lni-home"></i>
+                                        </div>
+                                        <div class="info-content">
+                                            <p>Gajuri-1, Dhading, State-3 Nepal</p>
+                                        </div>
+                                    </div>
+                                    <!-- single info -->
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- contact info -->
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="contact-form">
+                            <form id="appointment" action="/appointment" autocomplete="off" method="post" data-toggle="validator">
+                                <div class="row">
 
+                                    <div class="alert-info col-lg-12" id="check"></div>
+                                    <div class="col-lg-12">
+                                        <div class="single-form form-group">
+                                            <input type="text" name="name" placeholder="Enter Your Full Name" data-error="Name is required." required="required">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                        <!-- single form -->
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single-form form-group">
+                                            <input type="text" name="petname" placeholder="Enter Your Pet Name" data-error="Name is required." required="required">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                        <!-- single form -->
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="single-form form-group">
+                                            <input type="email" name="email" placeholder="Enter Your Email" data-error="Valid email is required." required="required">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                        <!-- single form -->
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="single-form form-group">
+                                            <input type="text" name="phone" placeholder="Enter Your Phone" data-error="Valid email is required." required="required">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                        <!-- single form -->
+                                    </div>
 
+                                    <div class="col-lg-6">
+                                        <div class="single-form form-group">
+                                            <input type="text" name="date" placeholder="Choose Date" data-field="date" autocomplete="new-password" data-error="Valid email is required." required="required">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                        <!-- single form -->
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="single-form form-group">
+                                            <input type="text" name="time" placeholder="Choose Time" data-field="time" autocomplete="new-password" data-error="Valid email is required." required="required">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                        <!-- single form -->
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single-form form-group">
+                                            <textarea name="message" placeholder="Enter Your Message" data-error="Please,leave us a message." required="required"></textarea>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                        <!-- single form -->
+                                    </div>
+                                    <p class="form-message"></p>
+                                    <div class="col-lg-12">
+                                        <div class="single-form form-group">
+                                            <button class="main-btn" type="submit">REQUEST NOW</button>
+                                            <div id="result"></div>
+                                        </div>
+                                        <!-- single form -->
+                                    </div>
+                                    <div id="dtBox"></div>
+                                </div>
+                                <!-- row -->
+                            </form>
+                        </div>
+                        <!-- row -->
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- contact box -->
         </div>
         <!-- container -->
     </section>
-
 
     <section id="footer" class="footer-area">
         <div class="container">
@@ -152,7 +276,6 @@
                         <div class="footer-link mt-50">
                             <h5 class="f-title">Help</h5>
                             <ul>
-
                                 <li><a href="./index.html#contact">Contact Us</a></li>
                                 <li><a href="./donate.html">Donate</a></li>
                             </ul>
@@ -235,5 +358,11 @@
 
     <!--====== Main js ======-->
     <script src="assets/js/main.js"></script>
+    <script src="assets/datetimepicker/src/DateTimePicker.js"></script>
 
-    <script src="assets/js/nav.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#dtBox").DateTimePicker();
+        });
+    </script>
