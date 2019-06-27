@@ -61,7 +61,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg">
-                        <a class="navbar-brand" href="./index.html">
+                        <a class="navbar-brand" href="./index.html" style="padding: 0;">
                             <img src="assets/logo/web3.png" class="logo" alt="Logo">
                         </a>
                         <!-- Logo -->
@@ -76,21 +76,37 @@
                                 <li class="nav-item active">
                                     <a data-scroll-nav="0" href="./index.html">Home</a>
                                 </li>
-                                <li class="nav-item ">
+                                <li class="nav-item fornormaluser">
                                     <a data-scroll-nav="0" href="./index.html#contact">Contact</a>
                                 </li>
-                                <li class="nav-item ">
+                                <li class="nav-item fornormaluser">
                                     <a data-scroll-nav="0" href="./donate.html">Donate</a>
                                 </li>
-                                <li class="nav-item ">
-                                    <a data-scroll-nav="0" href="./appointment.html">Take a appointment</a>
+                                <li class="nav-item fornormaluser">
+                                    <a data-scroll-nav="0" href="./appointment.html">Take an appointment</a>
                                 </li>
-                                <li class="nav-item ">
+                                <li class="nav-item">
+                                    <a data-scroll-nav="0" href="./forumList.html">Forum</a>
+                                </li>
+                                <li class="nav-item foradmin">
+                                    <a data-scroll-nav="0" href="./admin/appointment_list.html">Dashboard</a>
+                                </li>
+                                <li class="nav-item foruser">
                                     <a data-scroll-nav="0" href="./forumPost.html">Post</a>
+                                </li>
+                                <li class="nav-item dropdown logged">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" foruser foradmin>
+                                    Setting
+                                </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="./profileDetail.html">Profile</a>
+                                        <a class="dropdown-item" id="logout" href="javascript:void(0);">Logout</a>
+                                    </div>
                                 </li>
                                 <li class="nav-item" id="login">
                                     <a data-scroll-nav="0" href="./authenticate.html">Login</a>
                                 </li>
+
 
 
                             </ul>
@@ -281,6 +297,7 @@
     <!--====== Main js ======-->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/myscript.js"></script>
+    <script src="assets/js/nav.js"></script>
 
     <script src="assets/ckeditor/ckeditor.js"></script>
     <script>
