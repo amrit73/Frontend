@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!--====== Title ======-->
-    <title>Post</title>
+    <title>Forum</title>
 
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
@@ -56,6 +56,7 @@
     <!--====== PRELOADER PART START ======-->
 
     <!--====== HEADER PART START ======-->
+
     <header class="header-area">
         <div class="container">
             <div class="row">
@@ -121,65 +122,9 @@
         <!-- container -->
     </header>
 
+    <section id="allForum" class="contact-area pt-115">
 
-    <!--====== HEADER PART ENDS ======-->
-
-    <section id="contact" class="contact-area pt-115">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="contact-title text-center">
-                        <h2 class="title">Forum Post</h2>
-                    </div>
-                    <!-- contact title -->
-                </div>
-            </div>
-            <!-- row -->
-            <div class="contact-box mt-70">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="contact-form">
-                            <form id="forumPost" action="/normaluser/post" autocomplete="off" method="post" data-toggle="validator">
-                                <div class="row">
-                                    <div class="alert-info" id="check"></div>
-                                    <div class="col-lg-12">
-                                        <div class="single-form form-group">
-                                            <input type="text" name="title" placeholder="Enter Your Title" data-error="Name is required." required="required">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        <!-- single form -->
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="single-form form-group">
-                                            <textarea required="required" cols="80" id="editor2" name="description" rows="10" data-sample-short></textarea>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        <!-- single form -->
-                                    </div>
-                                    <p class="form-message"></p>
-                                    <div class="col-lg-12">
-                                        <div class="single-form form-group">
-                                            <button class="main-btn" type="submit">POST NOW</button>
-                                        </div>
-                                        <!-- single form -->
-                                    </div>
-                                </div>
-                                <!-- row -->
-                            </form>
-                        </div>
-                        <!-- row -->
-                    </div>
-                </div>
-                <!-- row -->
-            </div>
-            <!-- contact box -->
-        </div>
-        <!-- container -->
     </section>
-
-
-
     <section id="footer" class="footer-area">
         <div class="container">
             <div class="footer-widget pt-75 pb-120">
@@ -299,7 +244,19 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/myscript.js"></script>
     <script src="assets/js/nav.js"></script>
-    <script src="assets/ckeditor/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace('editor2');
+        $(document).ready(function() {
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:3000/api/postlist',
+                dataType: "html",
+                success: function(response) {
+                    console.log(response);
+                    document.getElementById("allForum").innerHTML = response;
+                },
+                error: function() {
+                    document.getElementById("allForum").innerHTML = "No data Available";
+                }
+            })
+        });
     </script>

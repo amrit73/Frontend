@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+    //api for contact 
     $("#form1").submit(function(event) {
         event.preventDefault();
 
@@ -20,7 +21,7 @@ $(document).ready(function() {
             error: function() {}
         })
     });
-
+    //api for appointment
     $("#appointment").submit(function(event) {
         event.preventDefault();
 
@@ -43,6 +44,9 @@ $(document).ready(function() {
         })
     });
 
+
+
+    //api for editing profile
     $("#profileDetail").submit(function(event) {
         event.preventDefault();
         var _form = $(this);
@@ -70,6 +74,34 @@ $(document).ready(function() {
     });
 
 
+    //api for posting on forum
+    $("#forumPost").submit(function(event) {
+        event.preventDefault();
+        var _form = $(this);
+        var postForm = { //Fetch form data
+            'token': localStorage.getItem("token"),
+            '_id': localStorage.getItem("_id"),
+            'username': localStorage.getItem("username"),
+            'title': $('input[name=title]').val(),
+            'description': CKEDITOR.instances['editor2'].getData(),
+        };
+        $.ajax({
+            type: 'POST',
+            url: 'http://127.0.0.1:3000/api/forumPost',
+            data: postForm,
+            dataType: "json",
+            beforeSend: function() {
+                $(".main-btn").attr("disabled", true);
+            },
+            success: function(response) {
+                _form[0].reset();
+                CKEDITOR.instances['editor2'].setData('');
+                $("#check").html(response.Success).addClass("alert");
+                $(".main-btn").attr("disabled", false);
+            },
+            error: function() {}
+        })
+    });
 
 
 });
