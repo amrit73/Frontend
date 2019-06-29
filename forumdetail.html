@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!--====== Title ======-->
-    <title>Donate</title>
+    <title>Post Details</title>
 
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
@@ -55,12 +55,13 @@
 
     <!--====== PRELOADER PART START ======-->
 
+    <!--====== HEADER PART START ======-->
     <header class="header-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg">
-                        <a class="navbar-brand" href="./index.html" style="padding: 0;">
+                        <a class="navbar-brand" href="./index.html">
                             <img src="assets/logo/web3.png" class="logo" alt="Logo">
                         </a>
                         <!-- Logo -->
@@ -82,19 +83,19 @@
                                     <a data-scroll-nav="0" href="./donate.html">Donate</a>
                                 </li>
                                 <li class="nav-item fornormaluser">
-                                    <a data-scroll-nav="0" href="./appointment.html">Take an appointment</a>
+                                    <a data-scroll-nav="0" href="./appointment.html">Take a appointment</a>
                                 </li>
                                 <li class="nav-item">
                                     <a data-scroll-nav="0" href="./forumList.html">Forum</a>
                                 </li>
                                 <li class="nav-item foradmin">
-                                    <a data-scroll-nav="0" href="./admin/appointment_list.html">Dashboard</a>
+                                    <a data-scroll-nav="0" href="./admin/dashboard.html">Dashboard</a>
                                 </li>
                                 <li class="nav-item foruser">
                                     <a data-scroll-nav="0" href="./forumPost.html">Post</a>
                                 </li>
                                 <li class="nav-item dropdown logged">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" foruser foradmin>
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Setting
                                 </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -120,8 +121,6 @@
         <!-- container -->
     </header>
 
-
-
     <section id="service" class="services-area pt-125 pb-130">
         <div class="container">
             <div class="row" id="allForum">
@@ -130,7 +129,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="contact-form">
-                        <form id="postComment" autocomplete="off" method="post" data-toggle="validator">
+                        <form id="postComment" action="/normaluser/post_comment" autocomplete="off" method="post" data-toggle="validator">
 
                             <div class="row">
                                 <div class="alert-info" id="check"></div>
@@ -145,7 +144,7 @@
                                 <p class="form-message"></p>
                                 <div class="col-lg-12">
                                     <div class="single-form form-group">
-                                        <button class="main-btn" type="submit">COMMENT NOW</button>
+                                        <button class="main-btn" type="submit">POST NOW</button>
                                     </div>
                                     <!-- single form -->
                                 </div>
@@ -180,8 +179,9 @@
                         <div class="footer-link mt-50">
                             <h5 class="f-title">Services</h5>
                             <ul>
-                                <li><a href="./appointment.html">Appointment</a></li>
-
+                                <li class="fornormaluser"><a href="./appointment.html">Appointment</a></li>
+                                <li class="fornormaluser"><a href="./forumList.html">Forum</a></li>
+                                <li class="foruser"><a href="./forumPost.html">Post</a></li>
 
                             </ul>
                         </div>
@@ -191,8 +191,8 @@
                         <div class="footer-link mt-50">
                             <h5 class="f-title">Help</h5>
                             <ul>
-
-                                <li><a href="./index.html#contact">Contact Us</a></li>
+                                <li><a href="./forumList.html">Forum</a></li>
+                                <li class="fornormaluser"><a href="./index.html#contact">Contact Us</a></li>
                                 <li><a href="./donate.html">Donate</a></li>
                             </ul>
                         </div>

@@ -103,5 +103,48 @@ $(document).ready(function() {
         })
     });
 
+    $("#postComment").submit(function(event) {
+        event.preventDefault();
+        var searchParams = new URLSearchParams(window.location.search);
+        var forum_id = "";
+        if (searchParams.has('id')) {
+            forum_id = searchParams.get('id');
+        }
+        var _form = $(this);
+        var msg = CKEDITOR.instances['editor2'].getData();
+        // var data = _form.serialize();
+        var data = 'username=' + localStorage.getItem("username") +
+            '&description=' + msg +
+            '&_id=' + localStorage.getItem("_id") +
+            '&forum_id=' + forum_id +
+            '&token=' + localStorage.getItem("token");
+        $.ajax({
+            type: 'POST',
+            url: 'http://127.0.0.1:3000/api/post_comment',
+            data: data,
+            dataType: "json",
+            beforeSend: function() {
+                $(".main-btn").attr("disabled", true);
+            },
+            success: function(response) {
+                _form[0].reset();
+                console.log(response);
+                $("#check").html(response.Success).addClass("alert");
+
+                if (response.Success == "Your comment successfully posted") {
+
+                    var comment = '<article><h4><a href="#">' + localStorage.getItem("username") + '</a></h4>' + msg + '</article>';
+                    $(comment).prependTo('#app');
+                    CKEDITOR.instances['editor2'].setData('');
+
+                }
+                $(".main-btn").attr("disabled", false);
+            },
+            error: function() {
+                alert('Login in first');
+            }
+        })
+    });
+
 
 });
