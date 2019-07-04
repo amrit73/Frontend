@@ -246,13 +246,51 @@
     <script src="assets/js/nav.js"></script>
     <script>
         $(document).ready(function() {
+            var myvar = "";
+
+            function strip_html(html) {
+                var toTrim = html.replace(/<[^>]*>?/gm, '');
+                var maxLength = 55; // maximum number of characters to extract
+
+                //trim the string to the maximum length
+                var trimmedString = toTrim.substr(0, maxLength);
+
+                //re-trim if we are in the middle of a word
+                trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")));
+                return trimmedString;
+            }
+
             $.ajax({
                 type: 'GET',
                 url: 'http://localhost:3000/api/postlist',
-                dataType: "html",
+                dataType: "JSON",
                 success: function(response) {
-                    console.log(response);
-                    document.getElementById("allForum").innerHTML = response;
+                    response.data.forEach((obj, i) => {
+                        myvar += '<div class="col-lg-8 col-md-6">' +
+                            '        <div class="single-blog mt-30">' +
+                            '            <div class="blog-content">' +
+                            '                <div class="content">' +
+                            '                    <h4 class="title"><a href="./forumDetail.html?id=' + obj._id + '">' + obj.title + '</a></h4>' +
+                            '                    <p>' + strip_html(obj.description) + '</p>' +
+                            '                </div>' +
+                            '' +
+                            '' +
+                            '                <div class="meta d-flex justify-content-between align-items-center">' +
+                            '                    <div class="meta-admin d-flex align-items-center">' +
+                            '                        <div class="image">' +
+                            '                            <img src="./assets/images/blog/avatar.jpg" alt="Admin">' +
+                            '                        </div>' +
+                            '                        <div class="admin-title">' +
+                            '                            <h6 class="title">' + obj.author + '</h6>' +
+                            '                        </div>' +
+                            '                    </div>  <!-- meta admin -->' +
+                            '                </div> <!-- meta -->' +
+                            '            </div>' +
+                            '        </div> <!-- single blog -->' +
+                            '    </div>';
+
+                    });
+                    document.getElementById("allForum").innerHTML = myvar;
                 },
                 error: function() {
                     document.getElementById("allForum").innerHTML = "No data Available";

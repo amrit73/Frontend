@@ -124,6 +124,22 @@
     <section id="service" class="services-area pt-125 pb-130">
         <div class="container">
             <div class="row" id="allForum">
+                <div class="col-lg-8">
+                    <div class="section-title pb-30">
+                        <h5 class="mb-15">Forum</h5>
+                        <h3 class="title mb-15" id="forum_title"></h3>
+                        <p id="forum_description"></p>
+                    </div>
+                    <!-- section title -->
+                </div>
+                <div class="col-lg-8">
+                    <br><br>
+                    <h4>Comments</h4>
+                    <hr>
+                    <section id="commentAll" class="comments">
+
+                    </section>
+                </div>
 
             </div>
             <div class="row">
@@ -283,21 +299,58 @@
     <script>
         $(document).ready(function() {
             var url = "http://localhost:3000/api/postDetail/";
+            var comment_url = "http://localhost:3000/api/get_comment/";
+            var id = "";
             var searchParams = new URLSearchParams(window.location.search);
             if (searchParams.has('id')) {
                 url = url + searchParams.get('id');
+                comment_url = comment_url + searchParams.get('id');
             }
 
             $.ajax({
                 type: 'GET',
                 url: url,
-                dataType: "html",
+                dataType: "json",
                 success: function(response) {
-                    document.getElementById("allForum").innerHTML = response;
+                    if (response.success == true) {
+                        $("#forum_title").html(response.data.title);
+                        $("#forum_description").html(response.data.description);
+                        get_comment();
+                    } else {
+                        document.getElementById("allForum").innerHTML = response;
+                    }
+
                 },
                 error: function() {
                     document.getElementById("allForum").innerHTML = "No data Available";
                 }
-            })
+            });
+
+            function get_comment() {
+                var comment_data = "";
+                $.ajax({
+                    type: 'GET',
+                    url: comment_url,
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.success == true) {
+                            response.data.forEach((obj, i) => {
+                                comment_data += '<article>' +
+                                    '                <h4><a href="#">' + obj.author + '</a></h4>' +
+                                    '' +
+                                    '                ' + obj.description + '' +
+                                    '            </article>';
+                            });
+                            document.getElementById("commentAll").innerHTML = comment_data;
+                        } else {
+                            document.getElementById("commentAll").innerHTML = comment_data;
+                        }
+
+                    },
+                    error: function() {
+                        document.getElementById("commentAll").innerHTML = "No data Available";
+                    }
+                });
+            }
         });
     </script>
