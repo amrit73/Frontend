@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    if (localStorage.getItem("token") != "undefined" && localStorage.getItem("token") != "") {
+    if (localStorage.getItem("token") != "undefined" && localStorage.getItem("token") != "" && localStorage.getItem("token") != null) {
         if (localStorage.getItem("admin") == "true") {
             $(".foruser").remove();
             $(".fornormaluser").remove();
