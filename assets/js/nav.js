@@ -20,4 +20,11 @@ $(document).ready(function() {
         $('<a href="authenticate.html" id="aa"></a>').appendTo("body");
         document.getElementById("aa").click();
     });
+
+    $('#navbarDropdown').click(function(e) {
+        e.preventDefault();
+        $(this).find(".dropdown-menu").addClass("show");
+        $('.navbar-collapse').addClass("show");
+
+    });
 });
